@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# shadowplay-repair gubbins
+output.mp4
+audio.aac
+frames/
