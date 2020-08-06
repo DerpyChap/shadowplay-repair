@@ -21,6 +21,7 @@ os.mkdir('frames')
 
 # Extract frames
 # TODO: make framerate user adjustable
+# TODO: Stream the video file directly instead of just exporting frames for PIL
 print('Extracting frames')
 subprocess.call(['ffmpeg', '-i', args.input, '-filter:v', 'fps=fps=60', 'frames/frame%d.jpg'])
 
@@ -52,5 +53,6 @@ for file in files:
 
 print('Exporting video')
 # Export new video file
+# TODO: Let's not hardcode ffmpeg arguments
 subprocess.call(['ffmpeg', '-framerate', '60', '-i', 'frames/frame%d.jpg', '-i',
                 'audio.aac', '-c:v', 'hevc_nvenc', '-preset', 'slow', '-b:v', '50M', '-c:a', 'copy', 'output.mp4'])
